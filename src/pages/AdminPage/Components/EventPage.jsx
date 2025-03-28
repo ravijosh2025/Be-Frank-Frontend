@@ -61,11 +61,11 @@ function EventPage() {
                             <Card key={event.id} title={event.name} className="shadow-md">
                                 <p>{event.date}</p>
                                 <div className="mt-4 flex gap-2">
-                                    <Button 
+                                    {/* <Button 
                                     onClick={()=>handleEdit(event)}
                                     >
                                     Edit
-                                    </Button>
+                                    </Button> */}
                                     <button
                                         onClick={() => handleDelete(event.id)}
                                         className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"

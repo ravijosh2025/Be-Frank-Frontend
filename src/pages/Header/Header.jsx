@@ -64,7 +64,7 @@ export default function Header() {
             >
               Home
             </NavLink>
-            {["Events", "About", "Contact","Donations"].map((item) => (
+            {["Events", "About", "Contact"].map((item) => (
               <NavLink
                 key={item}
                 to={`/${item.toLowerCase()}`}
@@ -148,7 +148,7 @@ export default function Header() {
                 Home
               </NavLink>
             </li>
-            {["Events", "About", "Contact", "Donations"].map((item) => (
+            {["Events", "About", "Contact"].map((item) => (
               <li key={item}>
                 <NavLink
                   to={`/${item.toLowerCase()}`}

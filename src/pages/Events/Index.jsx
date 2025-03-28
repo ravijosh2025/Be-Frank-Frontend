@@ -13,8 +13,7 @@ function Events() {
   const { Search } = Input;
 
   // Filtered events based on search
-  const filteredEvents =
-    events?.filter((event) => event.name.toLowerCase().includes(searchTerm.toLowerCase())) || [];
+  const filteredEvents = events?.filter((event) => event.name.toLowerCase().includes(searchTerm.toLowerCase())) || [];
 
   // Paginate events
   const startIndex = (currentPage - 1) * eventsPerPage;

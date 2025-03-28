@@ -73,8 +73,9 @@ const EditProfileForm = ({ onClose, UserData}) => {
               name="role"
               label="Role"
               rules={[{ required: true, message: "Please select a role!" }]}
+              
             >
-              <Select placeholder="Select your role">
+              <Select placeholder="Select your role" disabled>
                 <Option value="user">User</Option>
               </Select>
             </Form.Item>
@@ -88,14 +89,15 @@ const EditProfileForm = ({ onClose, UserData}) => {
                 { required: true, message: "Please enter your E-mail!" },
               ]}
             >
-              <Input />
+              <Input disabled/>
             </Form.Item>
 
             {/* Password */}
+            <p>If you don't want to change keep it blank.</p>
             <Form.Item
               name="password"
               label="Password"
-              rules={[{ required: true, message: "Please enter your password!" }]}
+              // rules={[{ required: true, message: "Please enter your password!" }]}
               hasFeedback
             >
               <Input.Password />
@@ -108,7 +110,6 @@ const EditProfileForm = ({ onClose, UserData}) => {
               dependencies={["password"]}
               hasFeedback
               rules={[
-                { required: true, message: "Please confirm your password!" },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
                     if (!value || getFieldValue("password") === value) {

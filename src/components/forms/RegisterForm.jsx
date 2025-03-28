@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Form, Input, Select, Spin, message} from "antd";
 import { useRegisterMutation } from "../../store/UserApis/userApi";
 import { getUserRole, getToken } from "../../utils/authHelpers";
+import { useDispatch } from "react-redux";
+import { adminApi } from "../../pages/AdminPage/apis";
 
 const { Option } = Select;
 
@@ -10,12 +12,16 @@ const RegisterForm = ({ onClose, opneLogin }) => {
   const [register, { isLoading, error }] = useRegisterMutation();
   const role = getUserRole().toLowerCase();
   const token = getToken();
+  const dispatch = useDispatch();
+
 
   const onFinish = async (values) => {
     try{
       await register( {"user": values });
       message.success("Registered successfully !")
       form.resetFields();
+      onClose();
+      dispatch(adminApi.util.invalidateTags(["Users"]))
     }catch(err){
       message.err("Something went wrong !")
     }
@@ -64,7 +70,7 @@ const RegisterForm = ({ onClose, opneLogin }) => {
             >
               <Select placeholder="Select your role">
                 { (role==="admin" &&  token) ? (
-                  <Option value="user">Admin</Option>
+                  <Option value="admin">Admin</Option>
                   ):(
                   <Option value="user">User</Option>
                 )

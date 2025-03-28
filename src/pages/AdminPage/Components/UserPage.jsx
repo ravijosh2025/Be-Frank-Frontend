@@ -15,7 +15,8 @@ const User=()=> {
   const [isOpenEditUser, setIsEditUserOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   
-    
+  const filteredAdmins =usersData?.filter((user) => user.role.toLowerCase().includes('admin' || 'Admin')) || [];
+
   const handledeleteUser = async(id) => {
       try{
         if(window.confirm("Are you sure to delete ")){
@@ -75,7 +76,7 @@ const User=()=> {
               </button>
           </motion.div>
    
-      <Table columns={columns} dataSource={usersData} rowKey="id" />
+      <Table columns={columns} dataSource={filteredAdmins} rowKey="id" />
 
       <Modal isOpen={isOpenEditUser} onClose={() => setIsEditUserOpen(false)}>
         <EditProfileForm onClose={() => setIsEditUserOpen(false)} UserData={selectedUser} />
